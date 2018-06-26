@@ -20,6 +20,7 @@
         </li>
     </ul>
 </nav>
+<?php if(isset($_SESSION['user'])): ?>
 <?php if(count($errors)): ?>
     <form class="form form--add-lot container form--invalid" action="add.php" method="post" enctype="multipart/form-data">
 <?php else: ?>
@@ -113,7 +114,10 @@
                 foreach($errors as $key => $value) {
                     $message = $message . "<br><b>" . $dis[$key] . "</b> - " . $value;
                 }
-            } ?>
+            }; ?>
             <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме: <?=$message;?></span>
             <button type="submit" class="button">Добавить лот</button>
         </form>
+        <?php else: ?>
+        <h1>Пожалуйста, авторизуйтесь для добавления объявлений!</h1>
+        <?php endif;?>

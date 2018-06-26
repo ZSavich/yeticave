@@ -1,4 +1,5 @@
 <?php
+session_start();
 function renderTemplate($link, $array) {
     $content = "";
     if(file_exists($link)) {
@@ -33,5 +34,13 @@ function format_data($data) {
 
 function esc($text) {
     return strip_tags($text);
+}
+
+function search_user_by_email($value, $array){
+    foreach($array as $user => $key) {
+        if($key['email'] == $value)
+            return ['email' => $key['email'], 'name' => $key['name'], 'password' => $key['password']];
+    }
+    return false;
 }
 ;?>

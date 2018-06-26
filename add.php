@@ -41,8 +41,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $page_content = renderTemplate('templates/lot.php', ['ad' => $ad]);
     }
 } else {
-    $page_content = renderTemplate('templates/add-lot.php', []);
+    if(isset($_SESSION['user'])){
+        $page_content = renderTemplate('templates/add-lot.php', []);
+    } else
+        http_response_code(403);
+        $page_content = renderTemplate('templates/add-lot.php', []);
 }
 
-$layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'user_name' => $user_name, 'user_avatar' => $user_avatar, 'categories' => $categories, 'is_auth' => $is_auth]);
+$layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'categories' => $categories]);
 print($layout_content);
