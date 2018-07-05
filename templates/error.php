@@ -44,7 +44,7 @@
 </header>
 
 <main class="container">
-    <?=$content;?>
+    <?=$error;?>
 </main>
 
 <footer class="main-footer">
