@@ -54,4 +54,6 @@ CREATE TABLE users (
 );
 CREATE UNIQUE INDEX id ON users(id);
 CREATE UNIQUE INDEX email ON users(email);
+
+CREATE FULLTEXT INDEX lot_search ON lots(name, description);
 	

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 function renderTemplate($link, $array) {
     $content = "";
     if(file_exists($link)) {
